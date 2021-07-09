@@ -6,7 +6,7 @@ export class RegisterController {
 
     constructor(private readonly registerservice : RegisterService ){}
     @Post()
-    addProducts(
+    addUser(
         @Body('name') U_name : string,
         @Body('email') U_eamil : string,
         @Body('password')U_password : string,
@@ -20,5 +20,14 @@ export class RegisterController {
     @Get()
     getAllProduct() {
         return {productfetched:  this.registerservice.fetchalluser()}
+    }
+
+    @Post()
+    logginsuccessfully(
+        @Body('email') UL_email :string,
+        @Body('password') UL_password :string
+    ) {
+        const log_User = this.registerservice.Login(UL_email, UL_password)
+        return {User: log_User}
     }
 }
