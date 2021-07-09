@@ -22,11 +22,12 @@ export class RegisterController {
         return {productfetched:  this.registerservice.fetchalluser()}
     }
 
-    @Post()
+    @Post('login')
     logginsuccessfully(
         @Body('email') UL_email :string,
         @Body('password') UL_password :string
     ) {
+        // console.log(UL_email,UL_password)
         const log_User = this.registerservice.Login(UL_email, UL_password)
         return {User: log_User}
     }
